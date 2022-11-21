@@ -43,6 +43,7 @@ namespace RestautrentProject {
 	private: System::Windows::Forms::TextBox^ txtpass;
 	private: System::Windows::Forms::Button^ btnOK;
 	private: System::Windows::Forms::Button^ btnCancel;
+	private: System::Windows::Forms::LinkLabel^ llRegister;
 	protected:
 
 	private:
@@ -65,6 +66,7 @@ namespace RestautrentProject {
 			this->txtpass = (gcnew System::Windows::Forms::TextBox());
 			this->btnOK = (gcnew System::Windows::Forms::Button());
 			this->btnCancel = (gcnew System::Windows::Forms::Button());
+			this->llRegister = (gcnew System::Windows::Forms::LinkLabel());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -114,7 +116,7 @@ namespace RestautrentProject {
 			// 
 			// btnOK
 			// 
-			this->btnOK->Location = System::Drawing::Point(173, 216);
+			this->btnOK->Location = System::Drawing::Point(182, 195);
 			this->btnOK->Name = L"btnOK";
 			this->btnOK->Size = System::Drawing::Size(89, 32);
 			this->btnOK->TabIndex = 5;
@@ -124,7 +126,7 @@ namespace RestautrentProject {
 			// 
 			// btnCancel
 			// 
-			this->btnCancel->Location = System::Drawing::Point(354, 216);
+			this->btnCancel->Location = System::Drawing::Point(393, 195);
 			this->btnCancel->Name = L"btnCancel";
 			this->btnCancel->Size = System::Drawing::Size(91, 32);
 			this->btnCancel->TabIndex = 6;
@@ -132,12 +134,24 @@ namespace RestautrentProject {
 			this->btnCancel->UseVisualStyleBackColor = true;
 			this->btnCancel->Click += gcnew System::EventHandler(this, &loginForm::btnCancel_Click);
 			// 
+			// llRegister
+			// 
+			this->llRegister->AutoSize = true;
+			this->llRegister->Location = System::Drawing::Point(392, 243);
+			this->llRegister->Name = L"llRegister";
+			this->llRegister->Size = System::Drawing::Size(92, 25);
+			this->llRegister->TabIndex = 7;
+			this->llRegister->TabStop = true;
+			this->llRegister->Text = L"Register";
+			this->llRegister->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &loginForm::llRegister_LinkClicked);
+			// 
 			// loginForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(12, 25);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::InactiveCaption;
 			this->ClientSize = System::Drawing::Size(515, 277);
+			this->Controls->Add(this->llRegister);
 			this->Controls->Add(this->btnCancel);
 			this->Controls->Add(this->btnOK);
 			this->Controls->Add(this->txtpass);
@@ -212,5 +226,11 @@ private: System::Void btnOK_Click(System::Object^ sender, System::EventArgs^ e) 
 	}
 
 	}
+	   public:bool switchToRegister = false;
+
+private: System::Void llRegister_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+	this->switchToRegister = true;
+	this->Close();
+}
 };
 }
